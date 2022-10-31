@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+
+import 'package:candlesticks/candlesticks.dart';
 
 import '../../domain/entities/graph_entity.dart';
 
@@ -22,17 +22,35 @@ class ChartPageState extends State<ChartPage> {
   @override
   void initState() {
     quotesList = widget.graphs as List<GraphEntity>;
-    inspect(quotesList);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Candle> candles = [];
+
+    for (final e in quotesList) {
+      final candle = Candle(
+        date: DateTime.fromMillisecondsSinceEpoch(e.time ?? 0 * 1000),
+        open: e.open ?? 0.0,
+        high: e.high ?? 0.0,
+        low: e.low ?? 0.0,
+        close: e.close ?? 0.0,
+        volume: double.parse(e.vol.toString()),
+      );
+
+      candles.add(candle);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
       ),
-      body: Container(),
+      body: SafeArea(
+        child: Candlesticks(
+          candles: candles,
+        ),
+      ),
     );
   }
 }

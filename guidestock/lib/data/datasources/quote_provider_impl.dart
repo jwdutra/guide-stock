@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:commons/errors/exceptions.dart';
 import 'package:commons/infrastructure/dio_backend/dio_backend_provider.dart';
@@ -30,6 +29,9 @@ class QuoteProviderImpl extends QuoteProvider {
           .substring(0, 10);
 
       final path = '$code.SA?period1=$init&period2=$end&interval=1d';
+
+      print(path);
+
       final response = await request!.get(path: path);
 
       final responseQuotes = jsonDecode(response);
@@ -82,8 +84,8 @@ class QuoteProviderImpl extends QuoteProvider {
 
       return quoteModel;
     } catch (e) {
-      inspect(e);
-      throw UnableToGetQuote('Erro de request de quotes 1');
+      //inspect(e);
+      throw UnableToGetQuote('Erro de request de quotes ');
     }
   }
 }

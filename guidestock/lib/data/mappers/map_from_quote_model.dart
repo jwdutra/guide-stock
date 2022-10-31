@@ -15,23 +15,25 @@ extension MapFromQuoteModel on QuoteModel {
     date!.asMap().forEach((key, value) {
       QuoteEntity quoteEntity = const QuoteEntity();
 
-      int k = key - 1;
-      var variacao = key > 0 ? close![key] - close![k] : 0;
-      var porcentoDiario = (variacao * 100) / open![key];
-      acumulado = acumulado + variacao;
-      acumuladoPorcento = acumuladoPorcento + porcentoDiario;
+      if (volume![key] > 0) {
+        int k = key - 1;
+        var variacao = key > 0 ? close![key] - close![k] : 0;
+        var porcentoDiario = (variacao * 100) / open![key];
+        acumulado = acumulado + variacao;
+        acumuladoPorcento = acumuladoPorcento + porcentoDiario;
 
-      final quote = quoteEntity.copyWith(
-        data: value,
-        abertura: double.parse(f.format(open![key])),
-        fechamento: double.parse(f.format(close![key])),
-        variacaoDiaria: double.parse(f.format(variacao)),
-        acumulado: double.parse(f.format(acumulado)),
-        porcentoDiario: double.parse(f.format(porcentoDiario)),
-        porcentoTotal: double.parse(f.format(acumuladoPorcento)),
-      );
+        final quote = quoteEntity.copyWith(
+          data: value,
+          abertura: double.parse(f.format(open![key])),
+          fechamento: double.parse(f.format(close![key])),
+          variacaoDiaria: double.parse(f.format(variacao)),
+          acumulado: double.parse(f.format(acumulado)),
+          porcentoDiario: double.parse(f.format(porcentoDiario)),
+          porcentoTotal: double.parse(f.format(acumuladoPorcento)),
+        );
 
-      listQuotes.add(quote);
+        listQuotes.add(quote);
+      }
     });
 
     return listQuotes;

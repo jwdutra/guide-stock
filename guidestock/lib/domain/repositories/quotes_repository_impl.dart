@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:commons/errors/exceptions.dart';
 import 'package:guidestock/data/mappers/map_from_quote_model.dart';
 
@@ -23,6 +25,8 @@ class QuotesRepositoryImpl extends QuotesRepository {
   }) async {
     try {
       quotes = await quoteProvider.getQuotesApi(code: code, period: period);
+
+      inspect(quotes);
 
       final results = quotes.toQuoteEntity();
 
