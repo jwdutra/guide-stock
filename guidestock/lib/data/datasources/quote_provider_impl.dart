@@ -29,22 +29,22 @@ class QuoteProviderImpl extends QuoteProvider {
           .toString()
           .substring(0, 10);
 
-      var path = '$code.SA?period1=$init&period2=$end&interval=1d';
-      var response = await request!.get(path: path);
+      final path = '$code.SA?period1=$init&period2=$end&interval=1d';
+      final response = await request!.get(path: path);
 
-      var responseQuotes = jsonDecode(response);
+      final responseQuotes = jsonDecode(response);
 
-      var dates = responseQuotes['chart']['result'][0]['timestamp'];
+      final dates = responseQuotes['chart']['result'][0]['timestamp'];
 
-      var quotes =
+      final quotes =
           responseQuotes['chart']['result'][0]['indicators']['quote'][0];
 
-      var open = <double>[];
-      var close = <double>[];
-      var high = <double>[];
-      var low = <double>[];
-      var volume = <int>[];
-      var date = <int>[];
+      final open = <double>[];
+      final close = <double>[];
+      final high = <double>[];
+      final low = <double>[];
+      final volume = <int>[];
+      final date = <int>[];
 
       quotes.forEach((key, value) {
         if (key == 'high') {
@@ -68,8 +68,8 @@ class QuoteProviderImpl extends QuoteProvider {
 
       QuoteModel quoteModel = const QuoteModel();
 
-      var inicio = date.length - period;
-      var fim = date.length;
+      final inicio = date.length - period;
+      final fim = date.length;
 
       quoteModel = quoteModel.copyWith(
         high: high.getRange(inicio, fim).toList(),

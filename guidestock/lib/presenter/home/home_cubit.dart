@@ -48,7 +48,6 @@ class HomeCubit extends Cubit<GetQuoteState> {
     } catch (e) {
       inspect(e);
       emit(GetQuoteFailure(UnableToGetQuote('API Retornou erro')));
-      //throw UnableToGetAccess('API Retornou erro');
     }
   }
 }

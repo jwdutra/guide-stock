@@ -21,8 +21,6 @@ class QuotesUsecaseImpl extends QuotesUsecase {
       final quotes =
           await quotesRepository.getDataQuotes(code: code, period: period);
 
-      //inspect(quotes);
-
       return quotes;
     } on UnableToGetQuote {
       rethrow;
@@ -37,8 +35,6 @@ class QuotesUsecaseImpl extends QuotesUsecase {
   List<GraphEntity> getDataGraph() {
     try {
       final graph = quotesRepository.getDataGraph();
-
-      //inspect(graph);
 
       return graph;
     } on UnableToGetQuote {

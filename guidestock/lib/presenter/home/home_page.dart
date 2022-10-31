@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:commons/infrastructure/config/app_globals.dart';
-import 'package:design_system/maisrenda_design_system.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -83,18 +83,18 @@ class HomePageState extends State<HomePage> {
         padding: EdgeInsets.all(AppTheme.defaultPadding),
         child: Column(
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 10.0),
             Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10.0),
               child: Form(
                 key: formState,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _fieldCode(),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 20.0),
                     _fieldPeriod(),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 20.0),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                       child: Column(

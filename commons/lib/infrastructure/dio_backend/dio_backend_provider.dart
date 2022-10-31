@@ -111,11 +111,11 @@ class DioBackendProvider {
     required String path,
   }) async {
     try {
-      var response = await client!.delete(
+      final response = await client!.delete(
         path,
       );
 
-      var responseReturn = jsonEncode(response.data);
+      final responseReturn = jsonEncode(response.data);
 
       return responseReturn;
     } on DioError catch (err) {

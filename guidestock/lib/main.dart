@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:design_system/maisrenda_design_system.dart';
+import 'package:design_system/design_system.dart';
 
 import 'di.dart' as di;
 import 'routes.dart';

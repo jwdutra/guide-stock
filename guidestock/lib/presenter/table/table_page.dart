@@ -37,23 +37,23 @@ class TablePage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  _titulo('Dia', 40),
-                  Expanded(child: _titulo('Data', 100)),
-                  _titulo('Valor', 60),
-                  _titulo('Variação', 80),
-                  _titulo('Acumulado', 90),
+                  _titulo('Dia', 40.0),
+                  Expanded(child: _titulo('Data', 100.0)),
+                  _titulo('Valor', 60.0),
+                  _titulo('Variação', 80.0),
+                  _titulo('Acumulado', 90.0),
                 ],
               ),
-              for (var e in quotesList)
+              for (final e in quotesList)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    _valor((count++).toString(), 40),
-                    Expanded(child: _valor(formatDate(e.data!), 100)),
+                    _valor((count++).toString(), 40.0),
+                    Expanded(child: _valor(formatDate(e.data!), 100.0)),
                     _valor(e.fechamento.toString(), 60),
-                    _valor('${e.porcentoDiario.toString()} %', 80),
-                    _valor('${e.porcentoTotal.toString()} %', 90),
+                    _valor('${e.porcentoDiario.toString()} %', 80.0),
+                    _valor('${e.porcentoTotal.toString()} %', 90.0),
                   ],
                 ),
             ],
@@ -63,7 +63,7 @@ class TablePage extends StatelessWidget {
     );
   }
 
-  Widget _titulo(String name, double size) {
+  Widget _titulo(final String name, final double size) {
     return Container(
       width: size,
       color: Colors.amber,
@@ -74,7 +74,7 @@ class TablePage extends StatelessWidget {
     );
   }
 
-  Widget _valor(String dado, double size) {
+  Widget _valor(final String dado, final double size) {
     return Container(
       alignment: Alignment.centerRight,
       width: size,
@@ -91,7 +91,7 @@ class TablePage extends StatelessWidget {
     );
   }
 
-  String formatDate(int timestamp) {
+  String formatDate(final int timestamp) {
     final DateTime data = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
     var result = DateFormat('dd/MM/yyyy').format(data);
 
